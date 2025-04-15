@@ -24,13 +24,39 @@
       object-fit: cover;
     }
 
-    /* Efeito de rotação dos ícones de pagamento */
     .payment-icon {
       transition: transform 0.5s;
     }
 
     .payment-icon:hover {
       transform: rotateY(180deg);
+    }
+
+    /* Banner responsivo mobile */
+    @media (max-width: 768px) {
+      .scrolling-banners {
+        height: 250px;
+      }
+
+      .scrolling-banners img {
+        object-position: center;
+      }
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #2d2d2d;
+      text-align: center;
+      padding: 12px 0;
     }
   </style>
 </head>
@@ -41,22 +67,38 @@
     Lançamento especial! Aproveite 20% OFF no primeiro mês de qualquer pacote –
     <a href="#planos" class="underline hover:text-yellow-300">Conheça planos</a>
   </div>
-  <!-- Cabeçalho -->
-  <header class="flex items-center justify-between px-6 py-4 bg-gray-800 shadow-md sticky top-0 z-50">
-    <div class="flex items-center gap-3">
-      <img src="https://cdn.dooca.store/14767/files/logo-ifontech-icone-3-copia-1.png?v=1635003558&webp=0" class="w-10 h-10" alt="Logo TI Fácil" />
-      <span class="text-2xl font-bold text-cyan-400">TI Fácil</span>
+
+  <!-- Cabeçalho Responsivo -->
+  <header class="bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="flex items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-3">
+        <img src="https://cdn.dooca.store/14767/files/logo-ifontech-icone-3-copia-1.png?v=1635003558&webp=0" class="w-10 h-10" alt="Logo TI Fácil" />
+        <span class="text-2xl font-bold text-cyan-400">TI Fácil</span>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white focus:outline-none text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <nav id="menu" class="hidden md:flex space-x-4 text-base">
+        <a href="#sobre" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Sobre</a>
+        <a href="#planos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Planos</a>
+        <a href="#depoimentos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Depoimentos</a>
+        <a href="#pagamentos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Pagamento</a>
+        <a href="#contato" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Contato</a>
+      </nav>
     </div>
-    <nav class="space-x-4 text-base">
-      <a href="#sobre" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Sobre</a>
-      <a href="#planos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Planos</a>
-      <a href="#depoimentos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Depoimentos</a>
-      <a href="#pagamentos" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Pagamento</a>
-      <a href="#contato" class="bg-gray-700 px-3 py-1 rounded-md hover:bg-cyan-600 transition">Contato</a>
-    </nav>
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden hidden flex-col px-6 pb-4 space-y-2">
+      <a href="#sobre" class="bg-gray-700 px-3 py-2 rounded-md block hover:bg-cyan-600">Sobre</a>
+      <a href="#planos" class="bg-gray-700 px-3 py-2 rounded-md block hover:bg-cyan-600">Planos</a>
+      <a href="#depoimentos" class="bg-gray-700 px-3 py-2 rounded-md block hover:bg-cyan-600">Depoimentos</a>
+      <a href="#pagamentos" class="bg-gray-700 px-3 py-2 rounded-md block hover:bg-cyan-600">Pagamento</a>
+      <a href="#contato" class="bg-gray-700 px-3 py-2 rounded-md block hover:bg-cyan-600">Contato</a>
+    </div>
   </header>
 
-  <!-- Barra de Banners -->
+  <!-- Banner Principal -->
   <div class="scrolling-banners h-[400px] overflow-hidden relative">
     <div id="banner-container" class="flex transition-transform duration-500">
       <img src="https://www.mm3ti.com.br/wp-content/uploads/2023/07/bannerafrican.png" alt="Banner 1" />
@@ -164,14 +206,17 @@
   <section id="pagamentos" class="py-16 px-6 bg-gray-950">
     <h2 class="text-4xl font-bold text-center mb-12 text-cyan-400">Formas de Pagamento</h2>
     <div class="flex justify-center gap-6">
-      <div class="payment-icon">
-        <img src="https://user-images.githubusercontent.com/741969/99538133-492fe280-298b-11eb-81a2-66779343e064.png" alt="Pix" class="w-16 h-16" />
+      <div class="payment-icon text-center">
+        <img src="https://user-images.githubusercontent.com/741969/99538133-492fe280-298b-11eb-81a2-66779343e064.png" alt="Pix" class="w-16 h-16 mx-auto" />
+        <p class="mt-2 text-sm text-gray-300">Pix</p>
       </div>
-      <div class="payment-icon">
-        <img src="https://img.icons8.com/?size=512&id=13608&format=png" alt="Visa" class="w-16 h-16" />
+      <div class="payment-icon text-center">
+        <img src="https://img.icons8.com/?size=512&id=13608&format=png" alt="Visa" class="w-16 h-16 mx-auto" />
+        <p class="mt-2 text-sm text-gray-300">Cartão Visa</p>
       </div>
-      <div class="payment-icon">
-        <img src="https://cdn.iconscout.com/icon/free/png-256/free-mastercard-3384869-2822950.png?f=webp" alt="Mastercard" class="w-16 h-16" />
+      <div class="payment-icon text-center">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-mastercard-3384869-2822950.png?f=webp" alt="Mastercard" class="w-16 h-16 mx-auto" />
+        <p class="mt-2 text-sm text-gray-300">Cartão Mastercard</p>
       </div>
     </div>
   </section>
@@ -205,17 +250,21 @@
       </div>
     </div>
   </section>
+
+  <!-- WhatsApp Flutuante -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<a href="https://wa.me/5596999073367" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
-  z-index:1000;" target="_blank">
-  <i style="margin-top:16px" class="fa fa-whatsapp"></i>
-</a>
+  <a href="https://wa.me/5596999073367" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;" target="_blank">
+    <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+  </a>
+
+  <!-- Rodapé -->
   <footer class="bg-gray-800 text-center py-6">
     <p class="text-sm text-gray-400">&copy; 2025 TI Fácil - Todos os direitos reservados</p>
   </footer>
 
-  <!-- Script de rotação automática dos banners -->
+  <!-- Scripts -->
   <script>
+    // Rotação de banners
     const bannerContainer = document.getElementById("banner-container");
     const banners = bannerContainer.querySelectorAll("img");
     let currentIndex = 0;
@@ -223,7 +272,15 @@
     setInterval(() => {
       currentIndex = (currentIndex + 1) % banners.length;
       bannerContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }, 5000); // Troca a cada 5 segundos
+    }, 5000);
+
+    // Menu hambúrguer
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
   </script>
 </body>
 
